@@ -5,22 +5,22 @@ import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
 
+    // Method to check palindrome using Queue + Stack
     public static boolean isPalindrome(String input) {
 
-        // Create Stack and Queue
-        Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();       // LIFO
+        Queue<Character> queue = new LinkedList<>();  // FIFO
 
-        // Insert characters into both data structures
+        // Fill both data structures
         for (int i = 0; i < input.length(); i++) {
             char ch = input.charAt(i);
-            stack.push(ch);      // LIFO
-            queue.add(ch);       // FIFO (enqueue)
+            stack.push(ch);   // push to stack
+            queue.add(ch);    // enqueue to queue
         }
 
-        // Compare dequeue (queue) with pop (stack)
+        // Compare stack pop vs queue dequeue
         while (!stack.isEmpty()) {
-            if (stack.pop() != queue.remove()) {   // remove() = dequeue
+            if (stack.pop() != queue.remove()) {
                 return false;
             }
         }
