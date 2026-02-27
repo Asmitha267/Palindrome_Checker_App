@@ -2,20 +2,23 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Original String
-        String original = "radar";
+        // Original String with mixed case
+        String original = "Madam";
 
-        // Variable to store reversed string
+        // Convert to lowercase to ignore case sensitivity
+        String lowerCaseString = original.toLowerCase();
+
         String reversed = "";
 
-        // Reverse using for loop
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);   // String concatenation
+        // Reverse string
+        for (int i = lowerCaseString.length() - 1; i >= 0; i--) {
+            reversed = reversed + lowerCaseString.charAt(i);
         }
 
-        // Compare using equals()
-        if (original.equals(reversed)) {
-            System.out.println("The string \"" + original + "\" is a Palindrome.");
+        // Compare
+        if (lowerCaseString.equals(reversed)) {
+            System.out.println("The string \"" + original + "\" is a Palindrome (Case-Insensitive).");
+
         } else {
             System.out.println("The string \"" + original + "\" is NOT a Palindrome.");
         }
