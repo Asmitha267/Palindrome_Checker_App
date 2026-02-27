@@ -1,26 +1,44 @@
+import java.util.Scanner;
+import java.util.Stack;
+
 public class PalindromeCheckerApp {
+
+    public static boolean isPalindrome(String input) {
+
+        // Create a stack of characters
+        Stack<Character> stack = new Stack<>();
+
+        // Push all characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
+
+        // Pop characters and compare with original string
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != stack.pop()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     public static void main(String[] args) {
 
-        // Original String with mixed case
-        String original = "Madam";
+        Scanner scanner = new Scanner(System.in);
 
-        // Convert to lowercase to ignore case sensitivity
-        String lowerCaseString = original.toLowerCase();
+        System.out.println("=== Palindrome Checker App (UC5: Stack Based) ===");
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
 
-        String reversed = "";
+        boolean result = isPalindrome(input);
 
-        // Reverse string
-        for (int i = lowerCaseString.length() - 1; i >= 0; i--) {
-            reversed = reversed + lowerCaseString.charAt(i);
-        }
-
-        // Compare
-        if (lowerCaseString.equals(reversed)) {
-            System.out.println("The string \"" + original + "\" is a Palindrome (Case-Insensitive).");
-
+        if (result) {
+            System.out.println("Result: The given string is a palindrome.");
         } else {
-            System.out.println("The string \"" + original + "\" is NOT a Palindrome.");
+            System.out.println("Result: The given string is NOT a palindrome.");
         }
+
+        scanner.close();
     }
 }
